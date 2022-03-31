@@ -169,6 +169,7 @@ include_directories(
  catkin_install_python(PROGRAMS
    scripts/img_listener.py
    scripts/img_listener_UDP.py
+   scripts/img_listener_UDP_thermal.py
    scripts/UDP_server.py
    scripts/TCP_server.py
    scripts/UDP_client.py
