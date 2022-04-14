@@ -13,7 +13,7 @@ def UDP_server(localIP,localPort):
     # Create UDP server socket
     UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
     UDPServerSocket.bind((localIP,localPort))
-    print("UDP server up and listening")
+    print("images UDP server up and listening")
         
     count = 0
     while not rospy.is_shutdown():
@@ -27,7 +27,6 @@ def UDP_server(localIP,localPort):
         img.data = data
         img.format = "jpg"
         image_pub.publish(img)
-        rospy.sleep(0.01)
         
 
 if __name__ == "__main__":

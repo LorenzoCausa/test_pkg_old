@@ -9,7 +9,7 @@ import os
 # ROS
 import rospy 
 from geometry_msgs.msg import Point
-from test_pkg.msg import Drone_cmd
+from my_custom_interfaces.msg import Drone_cmd
 
 
 class send_cmd_socket():
@@ -30,7 +30,7 @@ class send_cmd_socket():
 
         self.sub = rospy.Subscriber("/cmd_vel", Drone_cmd, self.send_cmd_to_app, queue_size=1)
 
-    def send_msg(self, msg, client):
+    def send_msg(self, msg, client):  # FUNZIONE DA ELIMINARE
         message = msg.encode(self.FORMAT)  # codificarlo in binario per la trasmissione
         client.send(message)  # mando msg
         # print(client.recv(2048).decode(FORMAT))# decodifico risposta e la printo
@@ -49,7 +49,12 @@ class send_cmd_socket():
         socket.AF_INET, socket.SOCK_STREAM)  # creo il client
         client.connect(self.ADDR)  # indirizzo del server a cui devo connettermi
         print("Sending the jason msg...")
-        self.send_msg(msg, client)
+        message = msg.encode(self.FORMAT)  # codificarlo in binario per la trasmissione
+        client.send(message)  # mando msg
+        print("jason msg sent")
+        # print(client.recv(2048).decode(FORMAT))# decodifico risposta e la printo
+        client.close()
+        #self.send_msg(msg, client)
 
 
 if __name__ == "__main__":
