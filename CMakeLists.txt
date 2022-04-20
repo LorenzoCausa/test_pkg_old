@@ -175,7 +175,6 @@ include_directories(
    scripts/UDP_client.py
    scripts/command_publisher.py
    scripts/test_publisher.py
-   scripts/yolov5_ros/ros_detect.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 
